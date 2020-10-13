@@ -40,12 +40,12 @@ module Recap::Support::CapistranoExtensions
 
   # Run a git command in the `deploy_to` directory
   def git(command)
-    run "cd #{deploy_to} && umask 002 && sg #{application_group} -c \"git #{command}\""
+    run "cd #{deploy_to} && umask 002 && sg #{application_group} -c \"git --no-pager #{command}\""
   end
 
   # Capture the result of a git command run within the `deploy_to` directory
   def capture_git(command)
-    capture "cd #{deploy_to} && umask 002 && sg #{application_group} -c 'git #{command}'"
+    capture "cd #{deploy_to} && umask 002 && sg #{application_group} -c 'git --no-pager #{command}'"
   end
 
   def exit_code(command)
